@@ -1,0 +1,52 @@
+<odoo>
+  <!--Vista LIST -->
+  <record id="view_helado_list" model="ir.ui.view">
+    <field name="name">heladeria.helado.list</field>
+    <field name="model">heladeria.helado</field> 
+    <field name="arch" type="xml">
+      <list string="Lista de los Helados">
+        <field name="nombreHelado"/>
+        <field name="saborHelado"/>
+        <field name="temperaturaHelado"/>
+        <field name="colorHelado"/>
+        <field name="precioHelado"/>
+        <field name="tamanoHelado"/>
+      </list>
+    </field>
+  </record>
+
+  <!-- Vista FORM -->
+  <record id="view_helado_form" model="ir.ui.view">
+    <field name="name">heladeria.helado.form</field>
+    <field name="model">heladeria.helado</field> 
+    <field name="arch" type="xml">
+      <form string="Ficha del Helado">
+        <sheet>
+          <group>
+           <field name="nombreHelado"/>
+          <field name="saborHelado"/>
+          <field name="temperaturaHelado"/>
+          <field name="colorHelado"/>
+          <field name="precioHelado"/>
+          <field name="tamanoHelado"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <!-- Acción que enlaza ambas vistas -->
+  <record id="action_helado" model="ir.actions.act_window">
+    <field name="name">HELADOS</field>
+    <field name="res_model">heladeria.helado</field> 
+    <field name="view_mode">list,form</field> 
+    <field name="view_id" ref="view_helado_list"/>
+  </record>
+
+  <!-- Menús -->
+  <menuitem id="menu_helados_root" name="Gestionar los helados"/>
+  <menuitem id="menu_helados_modificar"
+            parent="menu_helados_root"
+            name="Helados"
+            action="action_helado"/>
+</odoo>
